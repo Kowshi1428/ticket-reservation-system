@@ -79,33 +79,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
 
-  <script>
-    VANTA.DOTS({
-      el: "#vanta-bg",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0xffffff,
-      backgroundColor: 0x000000,
-      spacing: 20,
-      showLines: false
-    });
+<script>
+  function submitSignup(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-    function submitSignup(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
+    // Store in localStorage for login check
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userPassword', password);
 
-      localStorage.setItem('userEmail', email);
-      localStorage.setItem('userPassword', password);
-
-      alert(`✅ Registered Successfully!\nEmail: ${email}`);
-      window.location.href = "login.html";
-    }
-  </script>
+    alert("✅ Registered successfully!");
+    window.location.href = "login.html";
+  }
+</script>
 </body>
 </html>
