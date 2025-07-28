@@ -124,21 +124,26 @@
     </div>
   </div>
 
-  <script>
-    function validateLogin(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const errorBox = document.getElementById('errorMsg');
+ <script>
+  function validateLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const errorBox = document.getElementById('errorMsg');
 
-      // ✅ Dummy check for hardcoded credentials
-      if (email === "admin@gmail.com" && password === "@1234") {
-        window.location.href = "dashboard.html";
-      } else {
-        errorBox.textContent = "❌ Invalid email or password!";
-      }
+    // 🔑 Get stored credentials from localStorage
+    const storedEmail = localStorage.getItem('userEmail');
+    const storedPassword = localStorage.getItem('userPassword');
+
+    // ✅ Match with stored values
+    if (email === storedEmail && password === storedPassword) {
+      window.location.href = "dashboard.html";
+    } else {
+      errorBox.textContent = "❌ Invalid email or password!";
     }
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
