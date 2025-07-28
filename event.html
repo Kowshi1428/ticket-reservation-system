@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Ticket Booking</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('ff.jpeg'); /* Replace with your own background */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logout-link {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .logout-link a {
+      text-decoration: none;
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .form-box {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 320px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.4s ease;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      z-index: 0;
+    }
+
+    .form-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(120deg, #00f0ff, #ff00c8, #00f0ff);
+      border-radius: 12px;
+      filter: blur(25px);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: -1;
+    }
+
+    .form-box:hover::before {
+      opacity: 1;
+    }
+
+    .form-box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.3) 100%);
+      transform: skewX(-20deg);
+      transition: 0.6s;
+      z-index: 1;
+    }
+
+    .form-box:hover::after {
+      left: 125%;
+      transition: left 0.6s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+      z-index: 2;
+      position: relative;
+    }
+
+    table {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    td {
+      padding: 6px;
+    }
+
+    select, input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #8e44ad;
+    }
+
+    .preview {
+      margin-top: 20px;
+      background: #fce4ec;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 16px;
+      color: #6a1b9a;
+      display: none;
+    }
+
+    /* Stylish event list section */
+    .event-list {
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px 20px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .event-list h3 {
+      margin-top: 0;
+      color: #444;
+      font-size: 18px;
+    }
+
+    .event-card {
+      background: #ffffff;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .event-card:hover {
+      background: #f3e5f5;
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔓 Logout link -->
+  <div class="logout-link">
+    <a href="logout.html">🚪 Logout</a>
+  </div>
+
+  <!-- 🎉 Stylish Event List -->
+  <div class="event-list">
+    <h3>📋 Available Events</h3>
+    <div class="event-card">🎤 Concert – ₹200</div>
+    <div class="event-card">💃 Dance Show – ₹150</div>
+    <div class="event-card">🎓 Seminar – ₹100</div>
+    <div class="event-card">🎭 Theatre Play – ₹180</div>
+  </div>
+
+  <!-- 📋 Booking Form -->
+  <div class="form-box">
+    <form onsubmit="showPreview(event)">
+      <h2>🎟️ Book Event</h2>
+      <table>
+        <tr>
+          <td>Event:</td>
+          <td>
+            <select id="event" onchange="setAmount()" required>
+              <option value="">--Select--</option>
+              <option value="Concert" data-price="200">Concert</option>
+              <option value="Dance Show" data-price="150">Dance Show</option>
+              <option value="Seminar" data-price="100">Seminar</option>
+              <option value="Theatre Play" data-price="180">Theatre Play</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Date:</td>
+          <td><input type="date" id="date" required></td>
+        </tr>
+        <tr>
+          <td>Amount:</td>
+          <td><input type="text" id="amount" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" value="Show Preview"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <!-- 👀 Preview Section -->
+  <div class="preview" id="previewBox"></div>
+
+  <script>
+    function setAmount() {
+      const eventSelect = document.getElementById("event");
+      const price = eventSelect.options[eventSelect.selectedIndex].getAttribute("data-price");
+      document.getElementById("amount").value = price ? `₹${price}` : "";
+    }
+
+    function showPreview(event) {
+      event.preventDefault();
+
+      const eventName = document.getElementById("event").value;
+      const date = document.getElementById("date").value;
+      const amount = document.getElementById("amount").value;
+
+      if (eventName && amount && date) {
+        const preview = document.getElementById("previewBox");
+        preview.innerHTML = `
+          🎭 <strong>Event:</strong> ${eventName}<br>
+          📅 <strong>Date:</strong> ${date}<br>
+          💰 <strong>Amount:</strong> ${amount}
+        `;
+        preview.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>

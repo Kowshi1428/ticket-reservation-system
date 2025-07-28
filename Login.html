@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('dr.jpeg'); /* Your background image */
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .logout-link {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .logout-link a {
+      text-decoration: none;
+      color: #ff5c5c;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      color: #fff;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .login-box label {
+      display: block;
+      text-align: left;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .login-box button:hover {
+      background-color: #2980b9;
+    }
+
+    .login-box .signup {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-box .signup a {
+      color: #00e1ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-box .signup a:hover {
+      text-decoration: underline;
+    }
+
+    #errorMsg {
+      color: #ff4d4d;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logout-link">
+    <a href="index.html">🏠 Home</a>
+  </div>
+
+  <div class="login-box">
+    <h2>Login</h2>
+    <form onsubmit="validateLogin(event)">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+      <div id="errorMsg"></div>
+    </form>
+
+    <div class="signup">
+      New user? <a href="signup.html">Sign up first</a>
+    </div>
+  </div>
+
+  <script>
+    function validateLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorBox = document.getElementById('errorMsg');
+
+      // Dummy credentials
+      if (username === "admin" && password === "1234") {
+        window.location.href = "dashboard.html"; // Redirect to dashboard
+      } else {
+        errorBox.textContent = "❌ Invalid username or password!";
+      }
+    }
+  </script>
+
+</body>
+</html>

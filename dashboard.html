@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Welcome</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000; /* black background */
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    #spring-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+    }
+
+    .dashboard-content {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #ffeeff;
+      text-shadow: 2px 2px 6px #ff80ab;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-buttons button {
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
+    }
+
+    .nav-buttons button:hover {
+      background-color: #f50057;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌸 Animated Spring Background on Black -->
+  <div id="spring-bg"></div>
+
+  <div class="dashboard-content">
+    <h1>🌸 Welcome to Ticket Reservation 🌸</h1>
+    <div class="nav-buttons">
+      <button onclick="location.href='movie.html'">🎬 Movie</button>
+      <button onclick="location.href='ticket.html'">🎟️ Ticket</button>
+      <button onclick="location.href='event.html'">🎉 Event</button>
+    </div>
+  </div>
+
+  <!-- ✨ Particle Background Script -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("spring-bg", {
+      particles: {
+        number: { value: 60 },
+        color: { value: ["#ff80ab", "#69f0ae", "#fff176"] }, // Pink, Mint, Yellow
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 4 },
+        move: {
+          enable: true,
+          speed: 1.2,
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 3 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+
+</body>
+</html>
