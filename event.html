@@ -6,7 +6,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: url('ff.jpeg'); /* Replace with your own background */
+      background-image: url('ff.jpeg'); 
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -162,24 +162,24 @@
 </head>
 <body>
 
-  <!-- 🔓 Logout link -->
+  <!--  Logout link -->
   <div class="logout-link">
-    <a href="logout.html">🚪 Logout</a>
+    <a href="logout.html"> Logout</a>
   </div>
 
   <!-- 🎉 Stylish Event List -->
   <div class="event-list">
     <h3>📋 Available Events</h3>
-    <div class="event-card">🎤 Concert – ₹200</div>
-    <div class="event-card">💃 Dance Show – ₹150</div>
-    <div class="event-card">🎓 Seminar – ₹100</div>
-    <div class="event-card">🎭 Theatre Play – ₹180</div>
+    <div class="event-card"> Concert – ₹200</div>
+    <div class="event-card"> Dance Show – ₹150</div>
+    <div class="event-card"> Seminar – ₹100</div>
+    <div class="event-card"> Theatre Play – ₹180</div>
   </div>
 
-  <!-- 📋 Booking Form -->
+  <!--  Booking Form -->
   <div class="form-box">
     <form onsubmit="showPreview(event)">
-      <h2>🎟️ Book Event</h2>
+      <h2> Book Event</h2>
       <table>
         <tr>
           <td>Event:</td>
@@ -228,9 +228,9 @@
       if (eventName && amount && date) {
         const preview = document.getElementById("previewBox");
         preview.innerHTML = `
-          🎭 <strong>Event:</strong> ${eventName}<br>
-          📅 <strong>Date:</strong> ${date}<br>
-          💰 <strong>Amount:</strong> ${amount}
+           <strong>Event:</strong> ${eventName}<br>
+           <strong>Date:</strong> ${date}<br>
+           <strong>Amount:</strong> ${amount}
         `;
         preview.style.display = "block";
       }
