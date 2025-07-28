@@ -66,10 +66,13 @@
   <script>
     function submitSignup(event) {
       event.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-      // Just a dummy message for now
+      // Store the credentials in localStorage
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userPassword', password);
+
       alert(`✅ Registered Successfully!\nEmail: ${email}`);
       window.location.href = "login.html";
     }
