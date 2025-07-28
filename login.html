@@ -53,7 +53,7 @@
       font-weight: bold;
     }
 
-    .login-box input[type="text"],
+    .login-box input[type="email"],
     .login-box input[type="password"] {
       width: 100%;
       padding: 10px;
@@ -109,8 +109,8 @@
   <div class="login-box">
     <h2>Login</h2>
     <form onsubmit="validateLogin(event)">
-    <label for="email">Email ID:</label>
-<input type="email" id="email" name="email" required>
+      <label for="email">Email ID:</label>
+      <input type="email" id="email" name="email" required>
 
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
@@ -127,15 +127,15 @@
   <script>
     function validateLogin(event) {
       event.preventDefault();
-      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
       const errorBox = document.getElementById('errorMsg');
 
       // Dummy credentials
-      if (username === "admin@gmail.com" && password === "@1234") {
+      if (email === "admin@gmail.com" && password === "@1234") {
         window.location.href = "dashboard.html"; // Redirect to dashboard
       } else {
-        errorBox.textContent = "❌ Invalid username or password!";
+        errorBox.textContent = "❌ Invalid email or password!";
       }
     }
   </script>
