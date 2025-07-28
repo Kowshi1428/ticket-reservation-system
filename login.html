@@ -131,11 +131,11 @@
     const password = document.getElementById('password').value.trim();
     const errorBox = document.getElementById('errorMsg');
 
-    // 🔑 Get stored credentials from localStorage
+    //  Get stored credentials from localStorage
     const storedEmail = localStorage.getItem('userEmail');
     const storedPassword = localStorage.getItem('userPassword');
 
-    // ✅ Match with stored values
+    //  Match with stored values
     if (email === storedEmail && password === storedPassword) {
       window.location.href = "dashboard.html";
     } else {
