@@ -8,7 +8,7 @@
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-image: url('dr.jpeg'); 
+      background-image: url('dr.jpeg');
       background-size: cover;
       background-position: center;
       font-family: Arial, sans-serif;
@@ -131,9 +131,9 @@
       const password = document.getElementById('password').value.trim();
       const errorBox = document.getElementById('errorMsg');
 
-      // Dummy credentials
+      // Dummy valid credentials
       if (email === "admin@gmail.com" && password === "@1234") {
-        window.location.href = "dashboard.html"; // Redirect to dashboard
+        window.location.href = "dashboard.html"; // ✅ Redirect on success
       } else {
         errorBox.textContent = "❌ Invalid email or password!";
       }
