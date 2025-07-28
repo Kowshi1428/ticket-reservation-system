@@ -19,16 +19,20 @@
     }
 
     .logout-link {
-      position: absolute;
-      top: 10px;
+      position: fixed;
+      top: 15px;
       right: 20px;
+      background-color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logout-link a {
       text-decoration: none;
       color: #e74c3c;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .form-box {
@@ -127,7 +131,6 @@
       display: none;
     }
 
-    /* Stylish event list section */
     .event-list {
       margin-bottom: 25px;
       background: rgba(255, 255, 255, 0.8);
@@ -162,7 +165,7 @@
 </head>
 <body>
 
-  <!-- ✅ Logout link (now goes to login.html) -->
+  <!-- ✅ Styled Logout like movie/ticket page -->
   <div class="logout-link">
     <a href="login.html">Logout</a>
   </div>
