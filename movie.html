@@ -16,18 +16,27 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .logout-link {
       position: absolute;
       top: 10px;
       right: 20px;
+      z-index: 10;
     }
 
     .logout-link a {
       text-decoration: none;
       color: #e74c3c;
       font-weight: bold;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .logout-link a:hover {
+      background: #fff;
     }
 
     .form-box {
@@ -39,10 +48,9 @@
       overflow: hidden;
       transition: 0.4s ease;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      z-index: 0;
+      z-index: 1;
     }
 
-    /*  Glowing Gradient Border on Hover */
     .form-box::before {
       content: "";
       position: absolute;
@@ -62,7 +70,6 @@
       opacity: 1;
     }
 
-    /*  Realistic Shine Sweep Effect */
     .form-box::after {
       content: "";
       position: absolute;
@@ -78,7 +85,7 @@
       );
       transform: skewX(-20deg);
       transition: 0.6s;
-      z-index: 1;
+      z-index: 2;
     }
 
     .form-box:hover::after {
@@ -91,13 +98,13 @@
       margin-bottom: 15px;
       color: #333;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     table {
       width: 100%;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     td {
@@ -137,13 +144,14 @@
 </head>
 <body>
 
+  <!-- 🔗 LOGOUT -->
   <div class="logout-link">
-    <a href="logout.html"> Logout</a>
+    <a href="#" onclick="logout()">Logout</a>
   </div>
 
   <div class="form-box">
     <form onsubmit="previewMovie(event)">
-      <h2> Select Movie</h2>
+      <h2>🎬 Select Movie</h2>
       <table>
         <tr>
           <td>Movie:</td>
@@ -193,6 +201,16 @@
         previewBox.innerHTML = `You selected <strong>${movie}</strong> on <strong>${date}</strong>.<br>Ticket Price: <strong>${amount}</strong>`;
       } else {
         previewBox.style.display = 'none';
+      }
+    }
+
+    function logout() {
+      if (confirm("Are you sure you want to logout?")) {
+        // Optional: clear stored credentials
+        // localStorage.removeItem('userEmail');
+        // localStorage.removeItem('userPassword');
+
+        window.location.href = "login.html";
       }
     }
   </script>
